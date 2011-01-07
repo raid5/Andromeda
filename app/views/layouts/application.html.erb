@@ -10,7 +10,7 @@
   
   <% if user_signed_in? %>
   
-    <%= current_user.username %>
+    <%= current_user.email %>
     |
     <%= link_to "Settings", edit_user_registration_path %>
     |
@@ -19,6 +19,8 @@
   <% else %>
   
     <%= link_to "Sign in", new_user_session_path %>
+    |
+    <%= link_to "Sign up", new_user_registration_path %>
     
   <% end %>
   
