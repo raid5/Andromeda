@@ -1,4 +1,4 @@
-Planets::Application.configure do
+Andromeda::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -36,6 +36,8 @@ Planets::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Enable threaded mode
   # config.threadsafe!
