@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Planet::Application.load_tasks
+Planets::Application.load_tasks

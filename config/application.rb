@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Planet
+module Planets
   class Application < Rails::Application
     # Added by the Rails 3 jQuery Template
 	  # http://github.com/lleger/Rails-3-jQuery, written by Logan Leger
