@@ -1,5 +1,5 @@
-<h2>Sign up</h2>
-
+<div id="container">
+<h2>Create your Andromeda Account</h2>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -16,3 +16,5 @@
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
+
+</div>
