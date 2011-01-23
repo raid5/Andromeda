@@ -9,7 +9,8 @@
 <body>
 <header>
   <div id="topics">Development | Design</div>
-  <div id="signin"><% if user_signed_in? %>
+  <div id="signin">
+    <% if user_signed_in? %>
 
       <%= current_user.email %>
       |
