@@ -44,6 +44,15 @@ Feature: Viewing clusters
     Then I should be on the cluster page for "Development Cluster Name"
     And I should see "Development Cluster Name"
   
-  
+  Scenario: An individual cluster via my clusters
+    Given I am authenticated as "adam@example.com" with password "passw0rd"
+    And I have the following clusters:
+      | name         | description                |
+      | DesClustName | My awesome design cluster. |
+      | DevClustName | My more awesome dev clust. |
+    When I view my clusters
+    And I follow "DesClustName"
+    Then I should be on the cluster page for "DesClustName"
+    And I should see "DesClustName"
   
 
