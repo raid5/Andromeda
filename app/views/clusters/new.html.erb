@@ -1,12 +1,21 @@
-<%= form_for @cluster do |f| %>
-  <%= render "shared/error_messages", :target => @cluster %>
+<div id="container">
+  <h2>CREATE YOUR CLUSTER!</h2>
+    <div id="create-cluster">
+    <%= form_for @cluster do |f| %>
+      <%= render "shared/error_messages", :target => @cluster %>
 
-  <%= f.label :name %><br />
-  <%= f.text_field :name %>
+      <p><%= f.label :name, :class => "form-text" %><br />
+      <%= f.text_field :name, :class => 'form form-field cluster-name' %></p>
   
-  <%= f.label :description %><br />
-  <%= f.text_area :description %>
+      <p><%= f.label :description, :class => "form-text" %><br />
+      <%= f.text_area :description, :class => "form" %></p>
   
-  <%= f.submit "Create cluster" %>
-<% end %>
-
+      <p align="right"><%= f.submit "Create cluster" %></p>
+    <% end %>
+  </div>
+  <div id="single">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id sapien arcu, sit amet congue leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus erat, commodo ullamcorper malesuada ac, blandit id nisi. Pellentesque suscipit neque porta lectus euismod eleifend. Pellentesque elementum dui ac augue dapibus eleifend vel eget nibh. Nam ac tortor purus, a rhoncus augue. Donec adipiscing eros in libero pharetra suscipit. Cras eget laoreet nisl. Praesent varius interdum erat non venenatis. Aliquam rutrum scelerisque metus, et tempus nisl scelerisque nec. Maecenas id sagittis est.</p>
+    <p><b>Share content with your friends</b><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id sapien arcu, sit amet congue leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus erat, commodo ullamcorper malesuada ac, blandit id nisi. Pellentesque suscipit neque porta lectus euismod eleifend. Pellentesque elementum dui ac augue dapibus eleifend vel eget nibh. Nam ac tortor purus, a rhoncus augue. Donec adipiscing eros in libero pharetra suscipit. Cras eget laoreet nisl. Praesent varius interdum erat non venenatis. Aliquam rutrum scelerisque metus, et tempus nisl scelerisque nec. Maecenas id sagittis est. </p>
+  </div>
+<div class="clear"></div>
+</div>
