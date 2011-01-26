@@ -12,6 +12,29 @@ describe ClustersController do
       get :index
       response.should redirect_to(new_user_session_path)
     end
+    
+    it "allows access to browse" do
+      get :browse
+      response.should_not redirect_to(new_user_session_path)
+    end
+    
+    it "allows access to show" do
+      cluster = Factory(:cluster)
+      
+      get :show, :id => cluster
+      response.should_not redirect_to(new_user_session_path)
+    end
+  end
+  
+  describe "GET show" do
+    before(:each) do
+      @cluster = Factory(:cluster)
+    end
+    
+    it "assigns the correct @cluster" do
+      get :show, :id => @cluster
+      assigns[:cluster].should eq(@cluster)
+    end
   end
   
   describe "GET new" do
@@ -113,6 +136,26 @@ describe ClustersController do
         get :index
         assigns[:clusters].should be_empty
       end
+    end
+  end
+  
+  describe "GET browse" do
+    before(:each) do
+      @user1 = Factory(:user)
+      @user2 = Factory(:user, :email => 'hello@github.com')
+      @user3 = Factory(:user, :email => 'rox@y.dog')
+
+      @clusters = [Factory(:cluster, :user => @user1, :created_at => 1.hour.ago),
+                   Factory(:cluster, :user => @user2, :created_at => 3.hour.ago),
+                   Factory(:cluster, :user => @user3, :created_at => 1.day.ago),
+                   Factory(:cluster, :user => @user1, :created_at => 2.day.ago),
+                   Factory(:cluster, :user => @user2, :created_at => 3.day.ago),
+                   Factory(:cluster, :user => @user3, :created_at => 7.day.ago)]
+    end
+    
+    it "assigns the correct @clusters" do
+      get :browse
+      assigns[:clusters].should eq(@clusters)
     end
   end
   

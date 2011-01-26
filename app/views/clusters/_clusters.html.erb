@@ -1,0 +1,9 @@
+<% if @clusters.empty? %>
+  <p>No clusters.</p>
+<% else %>
+  <ul>
+    <% @clusters.each do |cluster| %>
+    <li><%= link_to cluster.name, cluster_path(cluster) %></li>
+    <% end %>
+  </ul>
+<% end %>

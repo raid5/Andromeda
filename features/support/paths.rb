@@ -25,6 +25,9 @@ module NavigationHelpers
       
     when /create a new cluster/
       new_cluster_path
+      
+    when /the cluster page for "(.+)"/
+      cluster_path(Cluster.find_by_name($1))
 
     else
       begin

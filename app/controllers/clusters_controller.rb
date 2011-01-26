@@ -1,5 +1,9 @@
 class ClustersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show, :browse]
+  
+  def show
+    @cluster = Cluster.find(params[:id])
+  end
   
   def index
     @clusters = current_user.clusters
@@ -18,5 +22,9 @@ class ClustersController < ApplicationController
       flash[:alert] = "The cluster could not be saved."
       render :action => "new"
     end
+  end
+  
+  def browse
+    @clusters = Cluster.all
   end
 end

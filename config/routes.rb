@@ -1,7 +1,11 @@
 Andromeda::Application.routes.draw do
   devise_for :users
   
-  resources :clusters
+  resources :clusters do
+    collection do
+      get 'browse'
+    end
+  end
 
   match '/clusters' => 'clusters#index', :as => 'user_root'
 
