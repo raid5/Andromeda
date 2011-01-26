@@ -7,28 +7,36 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  
-  <% if user_signed_in? %>
-  
-    Logged in as <%= current_user.email %>
-    |
-    <%= link_to "Settings", edit_user_registration_path %>
-    |
-    <%= link_to "Sign out", destroy_user_session_path %>
-    
-  <% else %>
-  
-    <%= link_to "Sign in", new_user_session_path %>
-    |
-    <%= link_to "Sign up", new_user_registration_path %>
-    
-  <% end %>
-  
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-  <% end %>
+<header>
+  <div id="header">
+    <div id="logo"><%= link_to "ANDROMEDA", root_path, %></div>
+    <div id="topics">Development | Design</div>
+    <div id="signin">
+      <% if user_signed_in? %>
 
+        <%= current_user.email %>
+        |
+        <%= link_to "Settings", edit_user_registration_path %>
+        |
+        <%= link_to "Sign out", destroy_user_session_path %>
+
+      <% else %>
+
+        <%= link_to "Sign in", new_user_session_path %>
+        |
+        <%= link_to "Sign up", new_user_registration_path %>
+
+      <% end %>
+    </div>
+  </div>
+</header>
+<div id="content">  
   <%= yield %>
+</div>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+<footer></footer>
 
 </body>
 </html>
