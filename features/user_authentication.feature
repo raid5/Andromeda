@@ -10,7 +10,8 @@ Scenario Outline: Creating a new account
     And I fill in "user_password" with "<password>"
     And I fill in "user_password_confirmation" with "<password>"
     And I press "Sign up"
-    Then I should see "Logged in as <email>"
+    Then I should see "You have signed up successfully."
+    And I should see "<email>"
 
     Examples:
       | email        | password |
@@ -24,7 +25,8 @@ Scenario Outline: Signing into an account
   And I fill in "user_email" with "<email>"
   And I fill in "user_password" with "<password>"
   And I press "Sign in"
-  Then I should see "Logged in as <email>"
+  Then I should see "Signed in successfully."
+  And I should see "<email>"
   
   Examples:
     | email        | password   |

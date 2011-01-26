@@ -3,9 +3,7 @@ Andromeda::Application.routes.draw do
   
   resources :clusters
 
-  namespace :user do
-    root :to => "clusters#index"
-  end
+  match '/clusters' => 'clusters#index', :as => 'user_root'
 
   root :to => "home#index"
 end
