@@ -1,1 +1,11 @@
 <%= link_to "Add Cluster", new_cluster_path %>
+
+<% if @clusters.empty? %>
+  <p>No clusters.</p>
+<% else %>
+  <ul>
+    <% @clusters.each do |cluster| %>
+    <li><%= cluster.name %></li>
+    <% end %>
+  </ul>
+<% end %>

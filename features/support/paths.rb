@@ -22,6 +22,9 @@ module NavigationHelpers
     
     when /login/
       new_user_session_path
+      
+    when /create a new cluster/
+      new_cluster_path
 
     else
       begin

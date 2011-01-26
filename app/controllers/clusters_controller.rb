@@ -1,5 +1,8 @@
 class ClustersController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
+    @clusters = current_user.clusters
   end
   
   def new
@@ -7,8 +10,7 @@ class ClustersController < ApplicationController
   end
   
   def create
-    @cluster = Cluster.new(params[:cluster])
-    @cluster.user = current_user
+    @cluster = current_user.clusters.build(params[:cluster])
     if @cluster.save
       flash[:notice] = "The cluster was saved successfully."
       redirect_to :action => "index"

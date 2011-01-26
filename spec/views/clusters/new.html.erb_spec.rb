@@ -20,13 +20,14 @@ describe "clusters/new.html.erb" do
   end
   
   it "renders a text field for the cluster name" do
-    cluster.stub(:name => "the name")
+    name = "the name"
+    cluster.stub(:name => name)
     render
     rendered.should have_selector("form") do |form|
       form.should have_selector("input",
         :type => "text", 
         :name => "cluster[name]", 
-        :value => "the name"
+        :value => name
       )
     end
   end

@@ -30,7 +30,3 @@ Scenario Outline: Signing into an account
     | email        | password   |
     | adam@big.mac | passw0rd   |
     | d@hoang.org  | secretpass |
-
-
-
-

@@ -2,29 +2,39 @@ require 'spec_helper'
 
 describe Cluster do
   before(:each) do
-    @cluster = Cluster.new(
-      :name => "foo name",
-      :description => "bar description", 
-      :user => mock_model(User)
-    )
+    @user = Factory(:user)
+    @attr = {
+      :name => "A cluster", 
+      :description => "My sweet cluster of goodness"
+    }
+    @cluster = @user.clusters.create!(@attr)
   end
   
   it "is valid with valid attributes" do
     @cluster.should be_valid
   end
   
-  it "is not valid without a name" do
-    @cluster.name = nil
-    @cluster.should_not be_valid
+  describe "validations" do
+    it "requires a name" do
+      @cluster.name = nil
+      @cluster.should_not be_valid
+    end
+
+    it "requires a description" do
+      @cluster.description = nil
+      @cluster.should_not be_valid
+    end
   end
   
-  it "is not valid without a description" do
-    @cluster.description = nil
-    @cluster.should_not be_valid
+  describe "user assocations" do
+    it "has a user attribute" do
+      @cluster.should respond_to(:user)
+    end
+    
+    it "has the right associated user" do
+      @cluster.user_id.should == @user.id
+      @cluster.user.should == @user
+    end
   end
   
-  it "is not valid without a user" do
-    @cluster.user = nil
-    @cluster.should_not be_valid
-  end
 end

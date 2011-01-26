@@ -10,5 +10,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'webrat'
+  gem 'factory_girl_rails'
   gem 'launchy'
+  gem 'faker'
 end
