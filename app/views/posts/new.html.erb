@@ -1,0 +1,14 @@
+<%= form_for([@cluster, @post]) do |f| %>
+  <%= render "shared/error_messages", :target => @post %>
+
+  <p><%= f.label :url %><br />
+  <%= f.text_field :url %></p>
+  
+  <p><%= f.label :title %><br />
+  <%= f.text_field :title %></p>
+
+  <p><%= f.label :description %><br />
+  <%= f.text_area :description %></p>
+
+  <p><%= f.submit "Create post" %></p>
+<% end %>

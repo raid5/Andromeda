@@ -5,6 +5,8 @@ Andromeda::Application.routes.draw do
     collection do
       get 'browse'
     end
+    
+    resources :posts
   end
 
   match '/clusters' => 'clusters#index', :as => 'user_root'

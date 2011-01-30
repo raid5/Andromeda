@@ -28,6 +28,9 @@ module NavigationHelpers
       
     when /the cluster page for "(.+)"/
       cluster_path(Cluster.find_by_name($1))
+      
+    when /create a new post for "(.+)"/
+      new_cluster_post_path(Cluster.find_by_name($1))
 
     else
       begin

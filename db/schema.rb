@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110123053616) do
+ActiveRecord::Schema.define(:version => 20110130034955) do
 
   create_table "clusters", :force => true do |t|
     t.string   "name"
@@ -18,6 +18,17 @@ ActiveRecord::Schema.define(:version => 20110123053616) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "post_type",   :default => 0
+    t.string   "title"
+    t.string   "description"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "cluster_id"
   end
 
   create_table "users", :force => true do |t|

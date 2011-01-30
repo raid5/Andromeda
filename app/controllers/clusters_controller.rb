@@ -3,6 +3,7 @@ class ClustersController < ApplicationController
   
   def show
     @cluster = Cluster.find(params[:id])
+    @posts = @cluster.posts
   end
   
   def index

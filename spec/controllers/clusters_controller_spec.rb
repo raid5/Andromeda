@@ -3,6 +3,11 @@ require 'spec_helper'
 describe ClustersController do
 
   describe "access control" do
+    it "denies access to new" do
+      get :new
+      response.should redirect_to(new_user_session_path)
+    end
+    
     it "denies access to create" do
       post :create
       response.should redirect_to(new_user_session_path)
@@ -29,11 +34,17 @@ describe ClustersController do
   describe "GET show" do
     before(:each) do
       @cluster = Factory(:cluster)
+      @posts = [Factory(:post, :cluster => @cluster), Factory(:post, :url => 'http://examp.le', :cluster => @cluster)]
     end
     
     it "assigns the correct @cluster" do
       get :show, :id => @cluster
       assigns[:cluster].should eq(@cluster)
+    end
+    
+    it "assigns the correct @posts" do
+      get :show, :id => @cluster
+      assigns[:posts].should eq(@posts)
     end
   end
   
@@ -67,7 +78,7 @@ describe ClustersController do
         @attr = { :name => "", :description => "" }
       end
       
-      it "does not create a micropost" do
+      it "does not create a cluster" do
         lambda do
           post :create, :cluster => @attr
         end.should_not change(Cluster, :count)

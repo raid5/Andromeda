@@ -1,3 +1,7 @@
 <h1><%= @cluster.name %></h1>
 
 <p><%= @cluster.description %></p>
+
+<p><%= link_to "Add Post", new_cluster_post_path(@cluster) %></p>
+
+<%= render :partial => 'posts/posts' %>
